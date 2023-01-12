@@ -1,9 +1,9 @@
 require('dotenv').config()
-console.log(process.env)
-// const MongoClient = require('mongodb').MongoClient;
+//console.log(process.env)
 
 const MongoClient = require('mongodb').MongoClient;
 
+//pre .env switch out  MongoClient.connect(process.env.MONGO_URI) to use
 // const mongoURL='mongodb+srv://admin:SuperU$er!@cluster0.wj3jenx.mongodb.net/test'
 
 
