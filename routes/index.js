@@ -1,7 +1,10 @@
-const routes = require('express'.Router());
 
-routes.get('/', (req, res) => {
-    res.send("Emma Peach");
-})
 
-module.exports = routes;
+
+
+const express = require('express');
+const FriendController = require('../controllers/index');
+const router = express.Router();
+
+router.get('/', FriendController.getFriend);
+module.exports = router;
