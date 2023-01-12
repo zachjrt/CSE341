@@ -1,7 +1,6 @@
-
 const express = require('express');
-const FriendController = require('../controllers/index');
 const router = express.Router();
 
-router.get('/', FriendController.getFriend);
+router.use('/contacts', require('./contacts'))
+
 module.exports = router;
