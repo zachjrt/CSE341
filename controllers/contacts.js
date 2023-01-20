@@ -34,7 +34,11 @@ const createFriend = async (req, res, next) => {
                       .insertOne(userData);
 
   //Response
-
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while creating the contact.');
+  }
   //console confirmation
   console.log(`${result.modifiedCount} document(s) was/were created.`);
 };
@@ -56,7 +60,13 @@ const updateFriend = async (req, res, next) => {
     //response
     console.log(`${result.matchedCount} document(s) matched the query criteria.`);
     console.log(`${result.modifiedCount} document(s) was/were updated.`);
-};
+    if (result.modifiedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(result.error || 'Some error occurred while updating the contact.');
+    }
+
+  };
 //Delete
 const deleteFriend = async (req, res, next) => {
   //ID to delete
@@ -67,6 +77,12 @@ const deleteFriend = async (req, res, next) => {
   //Response
   console.log(`${result.matchedCount} document(s) matched the query criteria.`);
   console.log(`${result.modifiedCount} document(s) was/were updated.`);
+  if (result.deletedCount > 0) {
+    res.status(200).send();
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while deleting the contact.');
+  }
+
 };
 
 module.exports = { getFriends, getFriend, updateFriend, createFriend, deleteFriend };

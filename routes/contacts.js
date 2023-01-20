@@ -7,10 +7,10 @@ router.get('/', contactsController.getFriends);
 
 router.get('/:id', contactsController.getFriend);
 
-router.get('/update/:id/:first/:last/:email/:color/:birth', contactsController.updateFriend);
+router.put('/update/:id/:first/:last/:email/:color/:birth', contactsController.updateFriend);
 
-router.get('/create/:first/:last/:email/:color/:birth', contactsController.createFriend);
+router.post('/create/:first/:last/:email/:color/:birth', contactsController.createFriend);
 
-router.get('/delete/:id', contactsController.deleteFriend);
+router.delete('/delete/:id', contactsController.deleteFriend);
 
 module.exports = router;
