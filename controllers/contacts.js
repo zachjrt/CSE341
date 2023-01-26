@@ -23,11 +23,11 @@ const getFriend = async (req, res, next) => {
 //Post
 const createFriend = async (req, res, next) => {
   //Data to be added
-  const userFirstName = req.params.first;
-  const userLastName = req.params.last;
-  const userEmail = req.params.email;
-  const userColor = req.params.color;
-  const userBirthday = req.params.birth;
+  const userFirstName = req.body.firstName;
+  const userLastName = req.body.lastName;
+  const userEmail = req.body.email;
+  const userColor = req.body.favoriteColor;
+  const userBirthday = req.body.birthday;
   const userData = {'firstName':userFirstName, 'lastName':userLastName, 'email':userEmail, 'favoriteColor':userColor, 'birthday':userBirthday};
   //Operation
   const result = await mongodb.getDb().db().collection('contacts')
@@ -48,15 +48,15 @@ const updateFriend = async (req, res, next) => {
     //ID to update
     const userId = new ObjectId(req.params.id);
     //Data to update
-    const userFirstName = req.params.first;
-    const userLastName = req.params.last;
-    const userEmail = req.params.email;
-    const userColor = req.params.color;
-    const userBirthday = req.params.birth;
+    const userFirstName = req.body.firstName;
+    const userLastName = req.body.lastName;
+    const userEmail = req.body.email;
+    const userColor = req.body.favoriteColor;
+    const userBirthday = req.body.birthday;
     const userData = {'firstName':userFirstName, 'lastName':userLastName, 'email':userEmail, 'favoriteColor':userColor, 'birthday':userBirthday};
     //operation
     const result = await mongodb.getDb().db().collection('contacts')
-                        .updateOne({ _id: userId }, {$set: userData});
+                        .replaceOne({ _id: userId }, userData);
     //response
     console.log(`${result.matchedCount} document(s) matched the query criteria.`);
     console.log(`${result.modifiedCount} document(s) was/were updated.`);
@@ -70,6 +70,7 @@ const updateFriend = async (req, res, next) => {
 //Delete
 const deleteFriend = async (req, res, next) => {
   //ID to delete
+  //Request param switch to req.body
   const userId = new ObjectId(req.params.id);
   //Operation
   const result = await mongodb.getDb().db().collection('contacts')

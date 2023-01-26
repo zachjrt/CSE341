@@ -6,17 +6,28 @@ GET http://localhost:3000/contacts/63c0422d67e69acbfa799bc2  HTTP/1.1
 ###
 GET http://localhost:3000/contacts/63c0422d67e69acbfa799bc3  HTTP/1.1
 ###
+
 GET http://localhost:3000/contacts/63c0422d67e69acbfa799bc4 HTTP/1.1
-##############
+###
 #Assignment 2#
-##############
-PUT http://localhost:3000/contacts/update/63c0422d67e69acbfa799bc4/Fred/Astairs/none@email.com/red/12-12-1922 HTTP/1.1
+
+PUT http://localhost:3000/contacts/63d2beac65f1e606521a9889 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Fred", "lastName":"Astair", "email":"tester@test.com", "favoriteColor":"Green", "birthday":"7/12/10"
+}
 
 ###
-POST http://localhost:3000/contacts/create/NewGuy/Bletherton/none@email.com/blue/2-2-1982 HTTP/1.1
+POST http://localhost:3000/contacts/ HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Freddy2", "lastName":"Astair", "email":"tester@test.com", "favoriteColor":"Green", "birthday":"7/12/10"
+}
 
 ###
-DELETE http://localhost:3000/contacts/delete/63ca9e53dbc0052c6ed05744 HTTP/1.1
+DELETE http://localhost:3000/contacts/63ca9e53dbc0052c6ed05744 HTTP/1.1
 
 
 
@@ -31,3 +42,17 @@ GET https://zero1-personal-assignment.onrender.com/contacts/63c0422d67e69acbfa79
 GET https://zero1-personal-assignment.onrender.com/contacts/63c0422d67e69acbfa799bc3  HTTP/1.1
 ###
 GET https://zero1-personal-assignment.onrender.com/contacts/63c0422d67e69acbfa799bc4 HTTP/1.1
+###
+#Assignment 2#
+PUT http://zero1-personal-assignment.onrender.com/contacts/63c0422d67e69acbfa799bc4/ HTTP/1.1 content-type: application/json
+
+{
+    "firstName":"Fred", "lastName":"Astair", "email":"tester@test.com", "favoriteColor":"Green", "birthday":"7/12/10"
+}
+
+###
+POST http://zero1-personal-assignment.onrender.com/contacts/create/NewGuyVideoTest/Bletherton/none@email.com/blue/2-2-1982 HTTP/1.1
+
+###
+DELETE http://zero1-personal-assignment.onrender.com/contacts/delete/63caa2a772291fcb7017def4 HTTP/1.1
+
